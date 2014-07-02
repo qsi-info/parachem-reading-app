@@ -33,14 +33,20 @@
     -->
 
     <!--STYLES-->
-    
+    <link rel="stylesheet" href="/linker/styles/bootstrap.css">
+    <link rel="stylesheet" href="/linker/styles/main.css">
     <!--STYLES END-->
   </head>
 
   <body>
-    <%- partial('partials/header.ejs') %>
-    <%- body %>
+    <div id="wrap">
+      <%- partial('partials/header.ejs') %>    
+      <%- body %>
+    </div>
     <%- partial('partials/footer.ejs') %>
+
+    <!-- Loading GIF -->
+    <div class="modal-loading"></div>
 
 
 
@@ -93,7 +99,11 @@
     -->
 
     <!--SCRIPTS-->
-    <script src="/min/production.js"></script>
+    <script src="/linker/js/socket.io.js"></script>
+    <script src="/linker/js/sails.io.js"></script>
+    <script src="/linker/js/app.js"></script>
+    <script src="/linker/js/jquery.11-1-1.min.js"></script>
+    <script src="/linker/js/bootstrap.min.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
