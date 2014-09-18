@@ -27,6 +27,11 @@ Utils.popupWindow = function (url, width, height) {
 }
 
 
+function ucfirst (string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
 function isInt(n) {
    return typeof n === 'number' && n % 1 == 0;
 }
@@ -59,170 +64,217 @@ function syntaxHighlight(json) {
 
 
 
-var WindowAlert = function () {
-  var $modal = $('#alert');
-  var $message = $modal.find('#alertMessage');
 
-  return {
-
-    setMessage: function (selector, variables) {
-      var lang = $('html').attr('lang');
-      var variables = typeof variables !== 'undefined' ? variables : {};
-
-      var source = $(selector+'[lang="'+lang+'"]').html();
-      var template = Handlebars.compile(source);
-      $message.html(template(variables));
-    },
-
-    show: function () {
-      $modal.modal('show');
-    },
-
+Handlebars.registerHelper('displayDateTime', function () {
+  var datetime = new Date();
+  lang = document.getElementById('#__USER_LOCALE__');
+  switch (lang) {
+    case 'fr' : return ucfirst(moment(datetime).format("dddd, Do MMMM, h:mm a"));
+    case 'en' : 
+    default   : return ucfirst(moment(datetime).format("dddd, MMMM Do, h:mm a"));
   }
-};
+})
+
+
+// var WindowAlert = function () {
+//   var $modal = $('#alert');
+//   var $message = $modal.find('#alertMessage');
+
+//   return {
+
+//     setMessage: function (selector, variables) {
+//       var lang = $('html').attr('lang');
+//       var variables = typeof variables !== 'undefined' ? variables : {};
+
+//       var source = $(selector+'[lang="'+lang+'"]').html();
+//       var template = Handlebars.compile(source);
+//       $message.html(template(variables));
+//     },
+
+//     show: function () {
+//       $modal.modal('show');
+//     },
+
+//   }
+// };
 
 
 
-var WindowInfo = function () {
-  var $modal = $('#info');
-  var $message = $modal.find('#infoMessage');
+// var WindowInfo = function () {
+//   var $modal = $('#info');
+//   var $message = $modal.find('#infoMessage');
 
-  return {
+//   return {
 
-    setMessage: function (selector, variables) {
-      var lang = $('html').attr('lang');
-      var variables = typeof variables !== 'undefined' ? variables : {};
+//     setMessage: function (selector, variables) {
+//       var lang = $('html').attr('lang');
+//       var variables = typeof variables !== 'undefined' ? variables : {};
 
-      var source = $(selector+'[lang="'+lang+'"]').html();
-      var template = Handlebars.compile(source);
-      $message.html(template(variables));
-    },
+//       var source = $(selector+'[lang="'+lang+'"]').html();
+//       var template = Handlebars.compile(source);
+//       $message.html(template(variables));
+//     },
 
-    show: function () {
-      $modal.modal('show');
-    },
+//     show: function () {
+//       $modal.modal('show');
+//     },
 
-  }
-};
-
-
-
-var WindowConfirm = function () {
-  var $modal = $('#confirm');
-  var $message = $('#confirmMessage');
-
-  $modal.on('hide.bs.modal', function () {
-    $('#confirmConfirmButton').off('click');
-    $('#confirmCloseButton').off('click');
-  })
-
-  return {
-
-    setMessage: function (selector, variables) {
-      var lang = $('html').attr('lang');
-      var variables = typeof variables !== 'undefined' ? variables : {};
-
-      var source = $(selector+'[lang="'+lang+'"]').html();
-      var template = Handlebars.compile(source);
-      $message.html(template(variables));
-    },
-
-    setConfirm: function (cb) {
-      var cb = typeof cb !== 'undefined' ? cb : function () {};
-      $('#confirmConfirmButton').on('click', function (e) {
-        e.preventDefault();
-        $modal.modal('hide');
-        cb(true);
-      })
-    },
-
-    setClose: function (cb) {
-      var cb = typeof cb !== 'undefined' ? cb : function () {};
-      $('#confirmCloseButton').on('click', function (e) {
-        e.preventDefault();
-        cb(false);
-        $modal.modal('hide');
-      });
-    },
-
-    show: function () {
-      $modal.modal('show');
-    },
-
-  }
-
-
-};
+//   }
+// };
 
 
 
+// var WindowConfirm = function () {
+//   var $modal = $('#confirm');
+//   var $message = $('#confirmMessage');
+
+//   $modal.on('hide.bs.modal', function () {
+//     $('#confirmConfirmButton').off('click');
+//     $('#confirmCloseButton').off('click');
+//   })
+
+//   return {
+
+//     setMessage: function (selector, variables) {
+//       var lang = $('html').attr('lang');
+//       var variables = typeof variables !== 'undefined' ? variables : {};
+
+//       var source = $(selector+'[lang="'+lang+'"]').html();
+//       var template = Handlebars.compile(source);
+//       $message.html(template(variables));
+//     },
+
+//     setConfirm: function (cb) {
+//       var cb = typeof cb !== 'undefined' ? cb : function () {};
+//       $('#confirmConfirmButton').on('click', function (e) {
+//         e.preventDefault();
+//         $modal.modal('hide');
+//         cb(true);
+//       })
+//     },
+
+//     setClose: function (cb) {
+//       var cb = typeof cb !== 'undefined' ? cb : function () {};
+//       $('#confirmCloseButton').on('click', function (e) {
+//         e.preventDefault();
+//         cb(false);
+//         $modal.modal('hide');
+//       });
+//     },
+
+//     show: function () {
+//       $modal.modal('show');
+//     },
+
+//   }
 
 
-
-
-
-var WindowPrompt = function () {
-  var $modal = $('#prompt');
-  var $message = $('#promptMessage');
-
-  $modal.on('hide.bs.modal', function () {
-    $('#promptConfirmButton').off('click');
-    $('#promptCloseButton').off('click');
-  })
-
-  return {
-
-    setMessage: function (selector, variables) {
-      var lang = $('html').attr('lang');
-      var variables = typeof variables !== 'undefined' ? variables : {};
-
-      var source = $(selector+'[lang="'+lang+'"]').html();
-      var template = Handlebars.compile(source);
-      $message.html(template(variables));
-    },
-
-    setConfirm: function (cb) {
-      var cb = typeof cb !== 'undefined' ? cb : function () {};
-      $('#confirmConfirmButton').on('click', function (e) {
-        e.preventDefault();
-        $modal.modal('hide');
-        cb(true);
-      })
-    },
-
-    setClose: function (cb) {
-      var cb = typeof cb !== 'undefined' ? cb : function () {};
-      $('#confirmCloseButton').on('click', function (e) {
-        e.preventDefault();
-        cb(false);
-        $modal.modal('hide');
-      });
-    },
-
-    show: function () {
-      $modal.modal('show');
-    },
-
-  }
-
-
-};
+// };
 
 
 
 
 
-var handlebar_message = function (selector, variables) {
-  var lang = $('html').attr('lang');
-  var variables = typeof variables !== 'undefined' ? variables : {};
-
-  var source = $(selector+'[lang="'+lang+'"]').html();
-  var template = Handlebars.compile(source);
-  return template(variables);
-
-}
 
 
+
+// var WindowPrompt = function () {
+//   var $modal = $('#prompt');
+//   var $message = $('#promptMessage');
+
+//   $modal.on('hide.bs.modal', function () {
+//     $('#promptConfirmButton').off('click');
+//     $('#promptCloseButton').off('click');
+//   })
+
+//   return {
+
+//     setMessage: function (selector, variables) {
+//       var lang = $('html').attr('lang');
+//       var variables = typeof variables !== 'undefined' ? variables : {};
+
+//       var source = $(selector+'[lang="'+lang+'"]').html();
+//       var template = Handlebars.compile(source);
+//       $message.html(template(variables));
+//     },
+
+//     setConfirm: function (cb) {
+//       var cb = typeof cb !== 'undefined' ? cb : function () {};
+//       $('#confirmConfirmButton').on('click', function (e) {
+//         e.preventDefault();
+//         $modal.modal('hide');
+//         cb(true);
+//       })
+//     },
+
+//     setClose: function (cb) {
+//       var cb = typeof cb !== 'undefined' ? cb : function () {};
+//       $('#confirmCloseButton').on('click', function (e) {
+//         e.preventDefault();
+//         cb(false);
+//         $modal.modal('hide');
+//       });
+//     },
+
+//     show: function () {
+//       $modal.modal('show');
+//     },
+
+//   }
+
+
+// };
+
+
+
+
+
+// var handlebar_message = function (selector, variables) {
+//   var lang = $('html').attr('lang');
+//   var variables = typeof variables !== 'undefined' ? variables : {};
+
+//   var source = $(selector+'[lang="'+lang+'"]').html();
+//   var template = Handlebars.compile(source);
+//   return template(variables);
+
+// }
+
+
+
+
+
+
+
+
+/* HANDLEBARS HELPERS */
+// Handlebars.registerHelper('formatTime', function (date) {
+//   var date = new Date(date);
+//   return moment(date).format('h:mm a');
+// });
+
+// Handlebars.registerHelper('formatDate', function (date, lang) {
+//   var date = new Date(date);
+//   switch (lang) {
+//     case 'en' : return capitaliseFirstLetter(moment(date).format("dddd, MMMM Do, h:mm a"));
+//     case 'fr' : return capitaliseFirstLetter(moment(date).format("dddd, Do MMMM, h:mm a"));
+//   }
+// });
+
+// Handlebars.registerHelper('titleDate', function (date, lang) {
+//   var date = new Date(date);
+//   switch (lang) {
+//     case 'en' : return capitaliseFirstLetter(moment(date).format("dddd, MMMM Do"));
+//     case 'fr' : return capitaliseFirstLetter(moment(date).format("dddd, Do MMMM"));
+//   }
+// });
+
+
+// Handlebars.registerHelper('ifCond', function(v1, v2, options) {
+//   if(v1 === v2) {
+//     return options.fn(this);
+//   }
+//   return options.inverse(this);
+// });
 
 
 

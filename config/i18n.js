@@ -14,6 +14,6 @@ module.exports.i18n = {
   // Which locales are supported?
   locales: ['en', 'fr'],
   defaultLocale: 'fr',
-  cookie: 'sails_locale',
+  cookie: 'qsi.locale',
     
 };
