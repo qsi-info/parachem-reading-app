@@ -11,7 +11,7 @@
 module.exports.bootstrap = function (cb) {
 
 	// App Name
-	sails.config.appName = 'Sails Bootstrap';
+	sails.config.appName = 'QSI - Base App';
 
 
   // It's very important to trigger this callack method when you are finished 
