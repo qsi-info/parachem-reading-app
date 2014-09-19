@@ -1,5 +1,5 @@
 /**
- * TestController
+ * UserController
  *
  * @module      :: Controller
  * @description	:: A set of functions called `actions`.
@@ -15,23 +15,14 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 
-var passport = require('passport');
-
 module.exports = {
     
   
-	metro: function (req, res) {
-		return res.view();
-	},
 
-	schema: function (req, res) {
-		var model = req.param('model');
-		return res.json(eval('User').definition);
-	},
 
   /**
    * Overrides for the settings in `config/controllers.js`
-   * (specific to TestController)
+   * (specific to UserController)
    */
   _config: {}
 
