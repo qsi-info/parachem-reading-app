@@ -5,15 +5,27 @@
 		<i class="fa fa-user"></i>	
 	</h1>
 	<h4 id="now"></h4>
+	<div id="datepicker"></div>
 
 </div>
 
 
 
 <script type="text/javascript">
-window.addEventListener('load', function () {
 
-	$('#now').html(Handlebars.compile($('#__DISPLAY_DATETIME_TEMPLATE__').html())());
+	window.addEventListener('load', function () {
 
-})
+		$('#datepicker').datepicker({
+			language: $('#__USER_LOCALE__').val(),
+			todayHighlight: true,
+			format: 'yyyy-mm-dd',
+		});
+
+
+		$('#now').html(Handlebars.compile($('#__DISPLAY_DATETIME_TEMPLATE__').html())());
+
+
+	})
+
+
 </script>
