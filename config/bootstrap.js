@@ -13,7 +13,7 @@ module.exports.bootstrap = function (cb) {
 	// App Name
 	sails.config.appName = 'QSI - Base App';
 
-	sails.config.theme = 'bootstrap/yeti';
+	sails.config.theme = 'bootstrap/lumen';
 
   // It's very important to trigger this callack method when you are finished 
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
