@@ -1,1 +1,1 @@
-node.exe app.js m--prod
+node.exe app.js --prod --port 15000
