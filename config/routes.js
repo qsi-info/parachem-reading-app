@@ -30,6 +30,8 @@ module.exports.routes = {
 
   '/cristallisation' : { view: 'readings/cristallisation' },
 
+  '/stdp' : { view: 'readings/stdp' },
+
 };
 
 

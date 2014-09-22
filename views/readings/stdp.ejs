@@ -1,0 +1,61 @@
+<div class="appContainer">
+
+	<div class="hidden">
+		<input type="hidden" id="server" value="http://paradevsrv02/reportserver"/>
+		<input type="hidden" id="folder" value="/readings/stdp/"/>
+	</div>
+
+	<!-- Report datepicker -->
+	<div class="row">
+		<div class="col-sm-4">
+
+	    <div class="input-group" id="reportDatepickerContainer">
+	      <span class="input-group-btn">
+	        <button class="btn btn-warning" type="button" id="back">
+	        	<%= __('Back') %>
+	        </button>
+	      </span>
+	      <input type="text" class="form-control" id="datepicker">
+	      <span class="input-group-btn">
+	        <button class="btn btn-success" type="button" id="foward">
+	        	<%= __('Foward') %>
+	        </button>
+	      </span>
+	    </div>
+
+		</div>
+
+		<div class="col-sm-3">
+			<button id="print" class="btn btn-primary" data-report="report"><%= __('Print') %></button>
+		</div>
+
+	</div>
+
+
+
+	<div class="row">
+		<div class="col-sm-12">
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+			  <li class="active">
+			  	<a href="#compresseurpropane" role="tab" data-toggle="tab">
+			  		C-1301 Compresseur de propane
+			  	</a>
+			  </li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content" id="reportContainer">
+			  <div class="tab-pane active" id="compresseurpropane">
+					<iframe src="" frameborder="0" class="report" data-report="compresseurpropane"></iframe>
+			  </div>
+			</div>
+
+
+
+		</div>
+	</div>
+
+</div>
+
