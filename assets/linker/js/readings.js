@@ -41,13 +41,17 @@ window.addEventListener('load', function () {
 		var currentDate = moment(datepicker.datepicker('getDate')).format('YYYY-MM-D') + 'T00:00:00';
 		var options = 'rs:Command=Render';	
 		var href = server + '?' + folder + report + '&' + options + '&lecture=' + currentDate;
-		Utils.popupWindow(href, 1200, 700);
+		Utils.popupWindow(href, 1200, 800);
 
 	})
 
 
 	$('.report').on('load', function () {
 		$('body').removeClass('loading');
+	})
+
+	$('.report-informations').on('load', function () {
+		$('body').removeClass('loading');		
 	})
 
 })
@@ -63,11 +67,15 @@ function show_reports (date, server, folder, report) {
 	var formatDate = moment(date).format('YYYY-MM-D') + 'T00:00:00';
 
 
+
 	$('.report').each(function (index, r) {
 		var report = $(this).attr('data-report');
 		var src = server + '?' + folder + report + '&' + options + '&lecture=' + formatDate;
 		$(this).attr('src', src);
 	})
+
+
+	$('.report-informations').attr('src', server + '?' + folder + 'informations' + '&' + options + '&lecture=' + formatDate);
 
 
 

@@ -36,3 +36,8 @@ body {
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 	color: #E51400 !important;
 }
+
+.report-informations {
+	height: 100px;
+	width: 50%;
+}
