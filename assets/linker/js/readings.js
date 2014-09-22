@@ -3,6 +3,7 @@ window.addEventListener('load', function () {
 	var today = new Date();
 	var server = $('#server').val();
 	var folder = $('#folder').val();
+	var report = $('#report').val();
 
 
 	var datepicker = $('#datepicker').datepicker({
@@ -13,7 +14,7 @@ window.addEventListener('load', function () {
 	})
 	.on('changeDate', function (e) {
 		var date = e.date;
-		show_reports(date, server, folder);
+		show_reports(date, server, folder, report);
 	})
 
 	datepicker.datepicker('setDate', today);
@@ -38,7 +39,6 @@ window.addEventListener('load', function () {
 	$('#print').on('click', function (e) {
 		e.preventDefault();
 		var currentDate = moment(datepicker.datepicker('getDate')).format('YYYY-MM-D') + 'T00:00:00';
-		var report = $(this).attr('data-report');
 		var options = 'rs:Command=Render';	
 		var href = server + '?' + folder + report + '&' + options + '&lecture=' + currentDate;
 		Utils.popupWindow(href, 1200, 700);
@@ -55,7 +55,7 @@ window.addEventListener('load', function () {
 
 
 
-function show_reports (date, server, folder) {
+function show_reports (date, server, folder, report) {
 
 	$('body').addClass('loading');
 
