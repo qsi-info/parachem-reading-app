@@ -40,7 +40,7 @@ window.addEventListener('load', function () {
 		e.preventDefault();
 		var currentDate = moment(datepicker.datepicker('getDate')).format('YYYY-MM-D') + 'T00:00:00';
 		var options = 'rs:Command=Render';	
-		var href = server + '?' + folder + report + '&' + options + '&lecture=' + currentDate;
+		var href = server + '?' + folder + 'report' + '&' + options + '&lecture=' + currentDate;
 		Utils.popupWindow(href, 1200, 800);
 
 	})
