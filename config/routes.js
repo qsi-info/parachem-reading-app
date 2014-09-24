@@ -29,9 +29,9 @@
 module.exports.routes = {
 
   '/cristallisation' : { view: 'readings/cristallisation' },
-
   '/stdp' : { view: 'readings/stdp' },
   '/classeurhuile' : { view: 'readings/classeurhuile' },
+  '/chaudieres' : { view: 'readings/chaudieres' },
 
 };
 
