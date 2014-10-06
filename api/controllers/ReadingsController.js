@@ -31,7 +31,11 @@ module.exports = {
   },
 
   chaudieres: function (req, res) {
-  	return res.view();
+    return res.view();
+  },
+
+  hydrogene: function (req, res) {
+    return res.view();
   },
 
 
