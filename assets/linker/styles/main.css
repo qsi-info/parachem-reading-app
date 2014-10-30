@@ -35,9 +35,20 @@ body {
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
 	color: #E51400 !important;
+	text-decoration: underline !important;	
 }
 
 .report-informations {
 	height: 150px;
 	width: 100%;
+}
+
+.nav-tabs > li > a {
+	font-size: 12px !important;
+	padding: 5px !important;
+	font-weight: bold !important;
+}
+
+.nav-tabs > li > a:hover, .nav-tabs > li > a:active {
+	text-decoration: underline !important;
 }
