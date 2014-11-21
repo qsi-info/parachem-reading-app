@@ -38,6 +38,18 @@ module.exports = {
     return res.view();
   },
 
+  verifications: function (req, res) {
+    return res.view();
+  },
+
+  pompes: function (req, res) {
+    return res.view();
+  },
+
+  analysesEau: function (req, res) {
+    return res.view();
+  },
+
 
   /**
    * Overrides for the settings in `config/controllers.js`
