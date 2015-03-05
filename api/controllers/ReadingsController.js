@@ -50,6 +50,10 @@ module.exports = {
     return res.view();
   },
 
+  verificationsQuotidiennes: function (req, res) {
+    return res.view();
+  },
+
 
   /**
    * Overrides for the settings in `config/controllers.js`

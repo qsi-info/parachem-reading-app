@@ -28,6 +28,8 @@
 
 module.exports.routes = {
 
+	'/' : 'HomeController.index',
+
   // '/cristallisation' : { view: 'readings/cristallisation' },
   // '/stdp' : { view: 'readings/stdp' },
   // '/classeurhuile' : { view: 'readings/classeurhuile' },
