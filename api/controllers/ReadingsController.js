@@ -53,6 +53,10 @@ module.exports = {
   verificationsQuotidiennes: function (req, res) {
     return res.view();
   },
+  
+  etatsbh: function (req, res) {
+      return res.view();
+  },
 
 
   /**
